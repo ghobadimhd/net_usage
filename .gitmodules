@@ -1,0 +1,3 @@
+[submodule "vnstat"]
+	path = vnstat
+	url = git@github.com:ghobadimhd/vnstat.git
