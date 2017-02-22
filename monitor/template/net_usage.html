@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Fixed table header</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+  
+      <link rel="stylesheet" href="/static/css/style.css">
+
+  
+</head>
+
+<body>
+{% for iface,traffic in interfaces.items %}
+  <section>
+  <!--for demo wrap-->
+  <h1>{{ iface }}</h1>
+  <div class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>jdate</th>
+          <th>rx</th>
+          <th>tx</th>
+          <th>total</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+     {% for record in traffic %}
+      <tr>
+
+          <td>{{ record.date }} </td>
+          <td>{{ record.jdate }} </td>
+          <td>{{ record.rx }} {{ record.unit }}</td>
+          <td>{{ record.tx }} {{ record.unit }}</td>
+          <td>{{ record.total }} {{ record.unit }}</td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endfor %}
+
+
+<!-- follow me template -->
+<div class="made-with-love">
+  Made with
+  <i>♥</i> by
+  <a target="_blank" href="http://codepen.io/nikhil8krishnan">Nikhil Krishnan</a>
+</div>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+    <script src="/static/js/index.js"></script>
+
+</body>
+</html>
