@@ -17,5 +17,13 @@ from django.conf.urls import include, url
 from monitor import views
 
 urlpatterns = [
-    url(r'^netusage/$', views.net_usage)
+    url(r'^netusage/?$', views.net_usage),
+    url(r'^netusage/(?P<interface>\w*)/?$', views.net_usage),
+    url(r'^netusage/(?P<interface>\w*)/'
+        r'(?P<traffic_set>days|tops|months|hours)/?$', views.net_usage),
+    url(r'^netusage/(?P<interface>\w*)/(?P<traffic_set>days|tops|months|hours)/'
+        r'(?P<from_date>\d{1,4}-\d{1,2}-\d{1,2})/?$', views.net_usage),
+    url(r'^netusage/(?P<interface>\w*)/(?P<traffic_set>days|tops|months|hours)/'
+        r'(?P<from_date>\d{1,4}-\d{1,2}-\d{1,2})/'
+        r'(?P<to_date>\d{1,4}-\d{1,2}-\d{1,2})/?$', views.net_usage)
 ]
