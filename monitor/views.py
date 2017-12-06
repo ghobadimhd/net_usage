@@ -22,6 +22,6 @@ def net_usage(request, interface=None, traffic_set='days',
         vnstat.format_data(data)
         vnstat.convert_unit(data)
         interfaces = vnstat.get(data, traffic_set, interface, from_date, to_date)
-        context = Context({'interfaces':interfaces})
+        context = dict({'interfaces':interfaces})
         return render_to_response('net_usage.html', context)
     raise Http404
